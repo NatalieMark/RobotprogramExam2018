@@ -195,6 +195,7 @@ int main(int argc, char** argv){
 				answer = "empty";
     		break;
 			default: 
+				cout << "Error, try again" << endl;
 				needNew();
 			break;
   		}
