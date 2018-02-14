@@ -194,7 +194,9 @@ int main(int argc, char** argv){
 				ros::spinOnce();
 				answer = "hej";
     		break;
-			default needNew();
+			default: 
+				needNew();
+			break;
   		}
 		ros::spinOnce();			
 	}
