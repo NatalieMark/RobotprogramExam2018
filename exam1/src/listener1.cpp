@@ -176,25 +176,25 @@ int main(int argc, char** argv){
 		moving();
 
 		switch(answer){
-    		case (1):
+    		case 1:
       			moving();
 				circle();
 				ros::spinOnce();
 				answer = "hej";
     		break;
-    		case (2):
+    		case 2:
 				moving();
 			  	square();
 				ros::spinOnce();
 				answer = "hej";
     		break;
-    		case (3):
+    		case 3:
 				moving();
 				randomwalk();
 				ros::spinOnce();
 				answer = "hej";
     		break;
-			needNew();
+			default needNew();
   		}
 		ros::spinOnce();			
 	}
