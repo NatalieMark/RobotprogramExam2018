@@ -194,7 +194,6 @@ int main(int argc, char** argv){
  			answer = "empty";
  		}
  		else{
-			cout << "Error, try again" << endl;
  			needNew();
 		}
 
