@@ -174,28 +174,29 @@ int main(int argc, char** argv){
 
 	while(ros::ok()){
 		moving();
-		if(answer == "1") {
-			moving();
-			circle();
-			ros::spinOnce();
-			answer = "hej";
-		}
-		else if(answer == "2"){
-			moving();
-		  	square();
-			ros::spinOnce();
-			answer = "hej";
-		}
-		else if(answer == "3"){
-			moving();
-			randomwalk();
-			ros::spinOnce();
-			answer = "hej";
-		}
-		else
+
+		switch(answer){
+    		case (1):
+      			moving();
+				circle();
+				ros::spinOnce();
+				answer = "hej";
+    		break;
+    		case (2):
+				moving();
+			  	square();
+				ros::spinOnce();
+				answer = "hej";
+    		break;
+    		case (3):
+				moving();
+				randomwalk();
+				ros::spinOnce();
+				answer = "hej";
+    		break;
 			needNew();
-			
-		ros::spinOnce();
+  		}
+		ros::spinOnce();			
 	}
 	rate.sleep();
 	return 0;
