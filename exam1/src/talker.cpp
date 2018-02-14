@@ -14,8 +14,8 @@ void UI(){
   std_msgs::String msg;
   stringstream ss;
   int option;
-  cout << "Introduction to what the user can do here"<<endl;
-  cout << "Choose one of the following options:"<<endl;
+  cout << "Introduction to what the user can do here" <<endl;
+  cout << "Choose one of the following options:" <<endl;
   cout << "Press 1 for circle " <<endl;
   cout << "Press 2 for square " <<endl;
   cout << "Press 3 for random walk" <<endl;
