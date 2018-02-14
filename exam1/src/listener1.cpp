@@ -167,7 +167,7 @@ int main(int argc, char** argv){
 
 	UI_sub = n.subscribe("Commands", 1000, chatterCallback); // (subscribing to, queue space, "update from publisher" - everytime something is published to the topics commands it will be written to the chatterCallback function)
   	pose_subscriber = n.subscribe("/turtle1/pose", 100, poseCallback);
-  	pub = n.advertise.<geometry_msgs::Twist>("/turtle1/cmd_vel", 1); // advertizing <What is pubished to>(the topic, queue size)
+  	pub = n.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 1); // advertizing <What is pubished to>(the topic, queue size)
   	pub1 = n.advertise<std_msgs::String>("Done", 1); // advertizing <What is pubished to>(the topic, queue size)
 
 	ros::Rate rate(10); // the Rate instance will attempt to keep the loop at 10hz by accounting for the time used by the work done during the loop.
