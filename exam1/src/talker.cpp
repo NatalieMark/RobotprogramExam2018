@@ -36,7 +36,6 @@ void UI(){
     break;
   }
   
-  // option = 0; // Test to see if it is needed to put it to 0
   pub.publish(msg);
   ros::spinOnce();
 }
