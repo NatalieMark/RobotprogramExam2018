@@ -12,13 +12,12 @@ ros::Publisher pub1;	//declaring a publisher
 ros::Subscriber pose_subscriber;  //declaring a Subscriber
 ros::Subscriber UI_sub;//declaring a Subscriber
 
-const double PI =3.14159265359; // sets a constant for PI
+const double PI = 3.14159265359; // sets a constant for PI
 
-bool done = false; //helps stop the loop in func square
 int xr;	// x coordinate of the turtle in turtlesim
 int yr;	// y coordinate of the turtle in turtlesim
 int dr;	// looking direction of the turtle in turtlesim
-string ans;
+string answer;
 
 void randomwalk();//prototyping the function
 void circle();//prototyping the function
@@ -49,15 +48,15 @@ void moving(){
 void poseCallback(const turtlesim::Pose::ConstPtr& msg){
 	xr = msg->x;
 	yr = msg->y;
-	dr = ((msg->theta*180)/PI)*100;
+	dr = ((msg->theta * 180)/PI) * 100;
   ROS_INFO("x: [%i], y: [%i] looking: [%i]", xr, yr, dr);
 }
 
 //subscribes to the topic "Done" and updates xr,yr,dr
 //every time a new msg is published
 void chatterCallback(const std_msgs::String::ConstPtr& data){
-	ans = data->data;
-  //ROS_INFO("I heard:[%s]", ans);
+	answer = data->data;
+  //ROS_INFO("I heard:[%s]", answer);
 }
 
 int main(int argc, char** argv){
@@ -75,23 +74,23 @@ int main(int argc, char** argv){
 
 	while(ros::ok()){
 		moving();
-		if(ans == "1") {
+		if(answer == "1") {
 			moving();
 			circle();
 			ros::spinOnce();
-			ans = "hej";
+			answer = "hej";
 		}
-		else if(ans == "2"){
+		else if(answer == "2"){
 			moving();
 		  	square();
 			ros::spinOnce();
-			ans = "hej";
+			answer = "hej";
 		}
-		else if(ans == "3"){
+		else if(answer == "3"){
 			moving();
 			randomwalk();
 			ros::spinOnce();
-			ans = "hej";
+			answer = "hej";
 		}
 		else
 			needNew();
@@ -119,69 +118,69 @@ void circle(){
 void square(){
 	ros::Rate rate(1);
 
-	while(xr != 10 && done == false) {
+	while(xr != 10) {
 		geometry_msgs::Twist msg;
 		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(dr <= 9000 && done == false)  {
+	while(dr <= 9000)  {
 		geometry_msgs::Twist msg;
 		msg.angular.z = 0.3;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(yr != 10 && done == false) {
+	while(yr != 10) {
 		geometry_msgs::Twist msg;
 		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(dr <= 18000 && done == false)  {
+	while(dr <= 18000)  {
 		geometry_msgs::Twist msg;
 		msg.angular.z = 0.3;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(xr != 2 && done == false) {
+	while(xr != 2) {
 		geometry_msgs::Twist msg;
 		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(dr <= 27000 && done == false)  {
+	while(dr <= 27000)  {
 		geometry_msgs::Twist msg;
 		msg.angular.z = 0.3;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(yr != 2 && done == false) {
+	while(yr != 2) {
 		geometry_msgs::Twist msg;
 		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(dr <= 35979 && done == false)  {
+	while(dr <= 35979)  {
 		geometry_msgs::Twist msg;
-		msg.angular.z =0.2;
+		msg.angular.z = 0.2;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(xr != 10 && done == false) {
+	while(xr != 10) {
 		geometry_msgs::Twist msg;
 		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while( dr < 8990 || dr > 9020 && done == false)  {
+	while(dr < 8990 || dr > 9020)  {
 		geometry_msgs::Twist msg;
-		msg.angular.z =0.3;
+		msg.angular.z = 0.3;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
-	while(yr <= 5 )  {
+	while(yr <= 5)  {
 		geometry_msgs::Twist msg;
-		msg.linear.x =1;
+		msg.linear.x = 1;
 		pub.publish(msg);
 		ros::spinOnce();
 	}
@@ -194,8 +193,8 @@ void randomwalk(){
 	srand(time(NULL));
 	while(count < 20){
 		geometry_msgs::Twist msg;
-		msg.linear.x =(double)(rand() % 10 + 1)/4.0;
-		msg.angular.z =(double)(rand() % 10 - 5)/2.0;
+		msg.linear.x = (double)(rand() % 10 + 1)/4.0;
+		msg.angular.z = (double)(rand() % 10 - 5)/2.0;
 		pub.publish(msg);
 		ros::spinOnce();
 		count++;
