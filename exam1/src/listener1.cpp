@@ -180,19 +180,19 @@ int main(int argc, char** argv){
       			moving();
 				circle();
 				ros::spinOnce();
-				answer = "hej";
+				answer = "empty";
     		break;
     		case 2:
 				moving();
 			  	square();
 				ros::spinOnce();
-				answer = "hej";
+				answer = "empty";
     		break;
     		case 3:
 				moving();
 				randomwalk();
 				ros::spinOnce();
-				answer = "hej";
+				answer = "empty";
     		break;
 			default: 
 				needNew();
