@@ -64,11 +64,11 @@ void circle(){
  	while (dr < 35900)
 	{
 		ros::Rate rate(1);
-			geometry_msgs::Twist msg;
-			msg.linear.x = 1;
-			msg.angular.z = 1;
-			pub.publish(msg);
-			ros::spinOnce();
+		geometry_msgs::Twist msg;
+		msg.linear.x = 1;
+		msg.angular.z = 1;
+		pub.publish(msg);
+		ros::spinOnce();
 	}
 	rate.sleep();
 };
@@ -175,30 +175,29 @@ int main(int argc, char** argv){
 	while(ros::ok()){
 		moving();
 
-		switch(answer){
-    		case 1:
-      			moving();
-				circle();
-				ros::spinOnce();
-				answer = "empty";
-    		break;
-    		case 2:
-				moving();
-			  	square();
-				ros::spinOnce();
-				answer = "empty";
-    		break;
-    		case 3:
-				moving();
-				randomwalk();
-				ros::spinOnce();
-				answer = "empty";
-    		break;
-			default: 
-				cout << "Error, try again" << endl;
-				needNew();
-			break;
-  		}
+		if(answer == "1") {
+ 			moving();
+ 			circle();
+ 			ros::spinOnce();
+ 			answer = "empty";
+ 		}
+ 		else if(answer == "2"){
+ 			moving();
+ 		  	square();
+ 			ros::spinOnce();
+ 			answer = "empty";
+ 		}
+ 		else if(answer == "3"){
+ 			moving();
+ 			randomwalk();
+ 			ros::spinOnce();
+ 			answer = "empty";
+ 		}
+ 		else{
+			cout << "Error, try again" << endl;
+ 			needNew();
+		}
+
 		ros::spinOnce();			
 	}
 	rate.sleep();
